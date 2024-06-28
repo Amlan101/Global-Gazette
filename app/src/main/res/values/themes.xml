@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GlobalGazette" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/grape</item>
+        <item name="colorPrimaryVariant">@color/grape</item>
+        <item name="android:statusBarColor">@color/grape</item>
+    </style>
+
+    <style name="Theme.GlobalGazette" parent="Base.Theme.GlobalGazette" />
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+    <item name="android:color">@color/lavender_blush</item>
+    </style>
+</resources>
