@@ -15,12 +15,13 @@ import com.example.globalgazette.models.Article
 
 class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
-    inner class ArticleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
-        lateinit var articleImage: ImageView
-        lateinit var articleSource: TextView
-        lateinit var articleTitle: TextView
-        lateinit var articleDescription: TextView
-        lateinit var articleDateTime: TextView
+    inner class ArticleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val articleImage: ImageView = itemView.findViewById(R.id.articleImage)
+        val articleSource: TextView = itemView.findViewById(R.id.articleSource)
+        val articleTitle: TextView = itemView.findViewById(R.id.articleTitle)
+        val articleDescription: TextView = itemView.findViewById(R.id.articleDescription)
+        val articleDateTime: TextView = itemView.findViewById(R.id.articleDateTime)
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -40,7 +41,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
 
     }
-    private val differ = AsyncListDiffer(this, differCallBack)
+    val differ = AsyncListDiffer(this, differCallBack)
 
     override fun getItemCount(): Int {
         return differ.currentList.size
@@ -51,18 +52,16 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val currentArticle = differ.currentList[position]
 
-        articleImage = holder.itemView.findViewById(R.id.articleImage)
-        articleSource = holder.itemView.findViewById(R.id.articleSource)
-        articleTitle =  holder.itemView.findViewById(R.id.articleTitle)
-        articleDescription =  holder.itemView.findViewById(R.id.articleDescription)
-        articleDateTime =  holder.itemView.findViewById(R.id.articleDateTime)
-
         holder.itemView.apply {
-            Glide.with(this).load(currentArticle.urlToImage).into(articleImage)
-            articleSource.text = currentArticle.source.name
-            articleTitle.text = currentArticle.title
-            articleDescription.text = currentArticle.description
-            articleDateTime.text = currentArticle.publishedAt
+            Glide.with(this)
+                .load(currentArticle.urlToImage)
+                .error(R.drawable.error_image_placeholder) // Add an error image
+                .into(holder.articleImage)
+
+            holder.articleSource.text = currentArticle.source?.name ?: "Unknown Source"
+            holder.articleTitle.text = currentArticle.title ?: "No Title"
+            holder.articleDescription.text = currentArticle.description ?: "No Description"
+            holder.articleDateTime.text = currentArticle.publishedAt ?: "Unknown Date"
 
             setOnClickListener {
                 onItemClickListener?.let {
@@ -70,7 +69,6 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
                 }
             }
         }
-
     }
 
     fun setItemClickListener(listener: (Article) -> Unit){

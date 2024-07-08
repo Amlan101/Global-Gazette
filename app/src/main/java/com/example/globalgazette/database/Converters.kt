@@ -7,7 +7,7 @@ class Converters {
 
     // This function is used to write to the database since it recognizes String, not Source datatype
     @TypeConverter
-    fun fromSource(source: Source): String{
+    fun fromSource(source: Source): String?{
         return source.name
     }
 

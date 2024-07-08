@@ -1,6 +1,7 @@
 package com.example.globalgazette.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -31,6 +32,15 @@ class NewsActivity : AppCompatActivity() {
         val navController =  navHostFragment.navController
 
         binding.bottomNavigationView.setupWithNavController(navController)
+
+        // Hides the bottom nav bar when ArticleFragment is open
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id) {
+                R.id.headlinesFragment, R.id.favouritesFragment, R.id.searchFragment ->
+                    binding.bottomNavigationView.visibility = View.VISIBLE
+                else -> binding.bottomNavigationView.visibility = View.GONE
+            }
+        }
 
     }
 }
