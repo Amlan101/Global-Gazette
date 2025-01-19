@@ -19,14 +19,14 @@ An engaging and up-to-date news aggregator app, bringing live news directly to u
 
 | **Headlines Page** | **Favorites Page** |
 |---------------------|--------------------|
-| ![Headlines Page](https://imgur.com/weYku4o.png) | ![Favorites Page](https://imgur.com/rz0tsZh.png) |
+| ![Headlines Page](https://i.imgur.com/CXY8QL3.png) | ![Favorites Page](https://i.imgur.com/dWG05hy.png) |
 | *Latest news headlines from various sources.* | *The page where users can access saved favorite articles.* |
 
 ### Additional Features
 
 | **Search Page** | **Article Details** |
 |-----------------|---------------------|
-| ![Search Page](https://imgur.com/Dtjeeav.png) | ![Article Details](https://imgur.com/ud4FQOo.png) |
+| ![Search Page](https://i.imgur.com/2idChB1.png) | ![Article Details](https://i.imgur.com/VEMeMX1.png) |
 | *Search for news articles on specific topics.* | *Detailed view of selected article with in-app WebView.* |
 ## 🚀 Installation and Run Locally
 
